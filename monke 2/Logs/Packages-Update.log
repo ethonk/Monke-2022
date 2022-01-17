@@ -1,5 +1,5 @@
 
-=== Mon Jan 17 20:04:11 2022
+=== Mon Jan 17 20:11:59 2022
 
 Packages were changed.
 Update Mode: mergeDefaultDependencies
@@ -43,3 +43,5 @@ The following packages were added:
   com.unity.textmeshpro@2.1.1
   com.unity.timeline@1.2.18
   com.unity.ugui@1.0.0
+The following packages were updated:
+  com.unity.render-pipelines.universal from version 7.5.2 to 7.5.3
