@@ -4,16 +4,32 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Values")]
+    public float val_power          = 100.0f;
+    public float val_drainRate      = 0.005f;
+
     [Header("States")]
-    public bool ste_tabletActive = false;
-    public bool ste_maskActive   = false;
+    public bool ste_tabletActive    = false;
+    public bool ste_maskActive      = false;
+
+    [Header("States - Doors")]
+    public bool ste_mainDoorActive  = false;
 
     [Header("Models")]
     public GameObject mdl_tablet;
     public GameObject mdl_mask;
+    
+    [Header("Doors")]
+    public GameObject mdl_mainDoor;
 
     void Update()
     {   
+        InputHandler();     // Handle all the input.
+        ValueHandler();     // Handle all the values.
+    }
+
+    void InputHandler()
+    {
         // Update the tablet
         if (Input.GetKeyDown(KeyCode.S) && !ste_maskActive)     // If key press && mask not active
         {
@@ -27,5 +43,26 @@ public class GameManager : MonoBehaviour
             ste_maskActive = !ste_maskActive;
             mdl_mask.GetComponent<Animator>().SetBool("mask-active", ste_maskActive);
         }
+
+        // == DOORS ==
+        // Update the Main Door
+        if (Input.GetKeyDown(KeyCode.W))    // If key press
+        {
+            ste_mainDoorActive = !ste_mainDoorActive;
+            mdl_mainDoor.GetComponent<Animator>().SetBool("door-active", ste_mainDoorActive);
+        }
+    }
+    
+    void ValueHandler()
+    {
+        // == DOOR POWER ==
+        // If the main door is active, drain power.
+        if (ste_mainDoorActive)
+            val_power -= val_drainRate;
+
+        // == OTHER POWER ==
+        // If the tablet is active, drain power.
+        if (ste_tabletActive)
+            val_power -= val_drainRate;
     }
 }
