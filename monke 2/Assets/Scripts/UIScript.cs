@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class UIScript : MonoBehaviour
@@ -13,6 +14,9 @@ public class UIScript : MonoBehaviour
     public GameObject ui_cameraStatic;
     public GameObject ui_roomButtons;
     public TextMeshProUGUI ui_power;
+    public GameObject ui_saladOptions;
+    public Image ui_saladRequest;
+
     [Header("UI Elements - Camera UI Specifics")]
     public GameObject ui_bananaPool;
 
@@ -41,6 +45,21 @@ public class UIScript : MonoBehaviour
             // Set UI
             ui_power.text = "you're fucked.";
         }
+
+        // Update current ingredient
+        switch(gameManager.val_saladMonkeyRequest)
+        {
+            case "banana":
+                ui_saladRequest.sprite = gameManager.img_banana;
+                break;
+            case "cheese":
+                ui_saladRequest.sprite = gameManager.img_cheese;
+                break;
+            case "lice":
+                ui_saladRequest.sprite = gameManager.img_lice;
+                break;
+        }
+        
     }
 
     void CameraUISpecifics()
@@ -50,5 +69,10 @@ public class UIScript : MonoBehaviour
             ui_bananaPool.SetActive(true);
         else    
             ui_bananaPool.SetActive(false);
+        // Salad UI
+        if(tabletScript.cmr_active == tabletScript.cmr_kitchen)
+            ui_saladOptions.SetActive(true);
+        else
+            ui_saladOptions.SetActive(false);
     }
 }

@@ -12,18 +12,26 @@ public class JumpscareHandler : MonoBehaviour
 
     [Header("Jumpscare Models")]
     public GameObject mdl_bananaPoolJumpscare;
+    public GameObject mdl_saladMonkeyJumpscare;
 
-    public void JumpscareBananaPool()
+    public void DeactivateComponents()
     {
-        jumpscared = true;
-        GetComponent<AudioSource>().Stop();     // Stop all sounds
-        GetComponent<AudioSource>().PlayOneShot(snd_bananaPoolJumpscare);
-        mdl_bananaPoolJumpscare.SetActive(true);
-
         // Close Tablet
         GetComponent<GameManager>().ste_tabletActive = false;
         // Switch Camera
         GetComponent<TabletScript>().SwitchToCamera(GetComponent<TabletScript>().cmr_office);
+    }
+
+    public void Jumpscare(GameObject mdl, AudioClip snd)
+    {
+        jumpscared = true;
+        GetComponent<AudioSource>().Stop();     // Stop all sounds
+        GetComponent<AudioSource>().PlayOneShot(snd);
+        print("sound played");
+        mdl.SetActive(true);
+        print("model spawned");
+
+        DeactivateComponents();
 
         StartCoroutine(EndJumpscare());
     }

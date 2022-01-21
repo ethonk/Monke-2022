@@ -9,10 +9,11 @@ public class GameManager : MonoBehaviour
     public float val_drainRate      = 0.005f;
     // Banana Pool
     public float val_bananaPool     = 100.0f;
-    public float val_poolDrainRate  = 0.01f;
+    public float val_poolDrainRate  = 0.1f;
     public float val_poolFillRate   = 0.1f;
     public float val_bananaPoolStartSize = 3.106382f;
     public float val_bananaPoolEndSize   = 0.200000f;
+    public string val_saladMonkeyRequest = "banana";
 
     [Header("States")]
     public bool ste_tabletActive    = false;
@@ -32,8 +33,17 @@ public class GameManager : MonoBehaviour
     public GameObject mdl_mainDoor;
 
     [Header("Sounds")]
+    // ball pit
     public AudioClip snd_ballpitTaskFail;
     public AudioClip snd_ballpitTaskSucceed;
+    // salad monkey
+    public AudioClip snd_saladMonkeyDispleasure;
+    public AudioClip snd_saladMonkeyPleasure;
+
+    [Header("Salad Images")]
+    public Sprite img_banana;
+    public Sprite img_cheese;
+    public Sprite img_lice;
 
     void Update()
     {   
@@ -42,9 +52,9 @@ public class GameManager : MonoBehaviour
         
         // Test Jumpscare
         if (val_bananaPool == 0)
-            if (GetComponent<JumpscareHandler>().jumpscared == false)
+            if (!GetComponent<JumpscareHandler>().jumpscared)
             {
-                GetComponent<JumpscareHandler>().JumpscareBananaPool();
+                GetComponent<JumpscareHandler>().Jumpscare(GetComponent<JumpscareHandler>().mdl_bananaPoolJumpscare, GetComponent<JumpscareHandler>().snd_bananaPoolJumpscare);
             }
     }
 
