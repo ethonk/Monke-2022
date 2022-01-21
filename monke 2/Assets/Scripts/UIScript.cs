@@ -8,10 +8,16 @@ public class UIScript : MonoBehaviour
     public GameManager gameManager;
 
     [Header("UI Elements")]
+    public GameObject ui_cameraStatic;
+    public GameObject ui_roomButtons;
     public TextMeshProUGUI ui_power;
 
     void Update()
     {
+        // Camera Static Toggle
+        ui_cameraStatic.SetActive(gameManager.ste_tabletActive);
+        ui_roomButtons.SetActive(gameManager.ste_tabletActive);
+
         // Check if dead
         if (gameManager.val_power > 0.0f)
         {
