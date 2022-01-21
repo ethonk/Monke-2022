@@ -24,34 +24,48 @@ public class GameManager : MonoBehaviour
     [Header("Models")]
     public GameObject mdl_tablet;
     public GameObject mdl_mask;
+
+    [Header("Cameras")]
+    public Camera cmr_main;
     
     [Header("Doors")]
     public GameObject mdl_mainDoor;
 
     [Header("Sounds")]
-    public AudioClip snd_ballpit;
+    public AudioClip snd_ballpitTaskFail;
+    public AudioClip snd_ballpitTaskSucceed;
 
     void Update()
     {   
         InputHandler();     // Handle all the input.
         ValueHandler();     // Handle all the values.
+        
+        // Test Jumpscare
+        if (val_bananaPool == 0)
+            if (GetComponent<JumpscareHandler>().jumpscared == false)
+            {
+                GetComponent<JumpscareHandler>().JumpscareBananaPool();
+            }
     }
 
     void InputHandler()
     {
         // Update the tablet
+        mdl_tablet.GetComponent<Animator>().SetBool("tablet-active", ste_tabletActive);
         if (Input.GetKeyDown(KeyCode.S) && !ste_maskActive)     // If key press && mask not active
         {
+            if (ste_tabletActive)   // Close camera
+                GetComponent<TabletScript>().SwitchToCamera(cmr_main);
             ste_tabletActive = !ste_tabletActive;
             mdl_tablet.GetComponent<Animator>().SetBool("tablet-active", ste_tabletActive);
         }
 
         // Update the mask
+        mdl_mask.GetComponent<Animator>().SetBool("mask-active", ste_maskActive);
         if (Input.GetKeyDown(KeyCode.Q) && !ste_tabletActive)    // If key press && tablet not active
         {
             ste_maskActive = !ste_maskActive;
             mdl_mask.GetComponent<Animator>().SetBool("mask-active", ste_maskActive);
-            if (ste_maskActive) GetComponent<AudioSource>().PlayOneShot(snd_ballpit);
         }
 
         // == DOORS ==
