@@ -7,6 +7,12 @@ public class GameManager : MonoBehaviour
     [Header("Values")]
     public float val_power          = 100.0f;
     public float val_drainRate      = 0.005f;
+    // Banana Pool
+    public float val_bananaPool     = 100.0f;
+    public float val_poolDrainRate  = 0.01f;
+    public float val_poolFillRate   = 0.1f;
+    public float val_bananaPoolStartSize = 3.106382f;
+    public float val_bananaPoolEndSize   = 0.200000f;
 
     [Header("States")]
     public bool ste_tabletActive    = false;
@@ -21,6 +27,9 @@ public class GameManager : MonoBehaviour
     
     [Header("Doors")]
     public GameObject mdl_mainDoor;
+
+    [Header("Sounds")]
+    public AudioClip snd_ballpit;
 
     void Update()
     {   
@@ -42,6 +51,7 @@ public class GameManager : MonoBehaviour
         {
             ste_maskActive = !ste_maskActive;
             mdl_mask.GetComponent<Animator>().SetBool("mask-active", ste_maskActive);
+            if (ste_maskActive) GetComponent<AudioSource>().PlayOneShot(snd_ballpit);
         }
 
         // == DOORS ==
@@ -64,5 +74,19 @@ public class GameManager : MonoBehaviour
         // If the tablet is active, drain power.
         if (ste_tabletActive)
             val_power -= val_drainRate;
+
+        // == BANANA POOL ==
+        if (val_bananaPool > 0)
+            val_bananaPool -= val_poolDrainRate;        // Otherwise, drain.
+            if (val_bananaPool < 0)
+                val_bananaPool = 0;     // Clamp
+    }
+
+    public void FillBananaPool()
+    {
+        if (val_bananaPool < 100.0f)
+            val_bananaPool += val_poolFillRate;
+            if (val_bananaPool > 100.0f)
+                val_bananaPool = 100.0f;    // Clamp.
     }
 }
