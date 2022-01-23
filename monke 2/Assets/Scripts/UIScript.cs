@@ -17,9 +17,18 @@ public class UIScript : MonoBehaviour
     public GameObject ui_saladOptions;
     public Image ui_saladRequest;
     public GameObject ui_saladRequestOptions;
+    public Image ui_advertisement;
 
     [Header("UI Elements - Camera UI Specifics")]
     public GameObject ui_bananaPool;
+
+    [Header("Advertisement - Random Button Position")]
+    public List<Vector3> ad_buttonPos;
+
+    void Start()
+    {
+        StartCoroutine(Advertisement());
+    }
 
     void Update()
     {
@@ -81,4 +90,29 @@ public class UIScript : MonoBehaviour
         else
             ui_saladOptions.SetActive(false);
     }
+
+    public IEnumerator Advertisement()
+    {
+        yield return new WaitForSeconds(gameManager.val_advertCooldown);
+        if (!ui_advertisement.gameObject.activeInHierarchy)
+        {
+            ui_advertisement.gameObject.SetActive(true);
+            ui_advertisement.sprite = gameManager.GenerateBananaAdvertImage();
+            
+            // generate random button positions
+            int index = Random.Range(0, ad_buttonPos.Count-1);
+            Vector3 buttonPos = ad_buttonPos[index];
+            ui_advertisement.transform.Find("Close").localPosition = buttonPos;
+
+            transform.root.GetComponent<AudioSource>().PlayOneShot(gameManager.snd_bananaPoster);
+        }
+        StartCoroutine(Advertisement());
+    }
+
+    public void CloseAdvertisement()
+    {
+        transform.root.GetComponent<AudioSource>().Stop();
+        ui_advertisement.gameObject.SetActive(false);
+    }
+
 }

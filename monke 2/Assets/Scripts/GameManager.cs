@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public float val_bananaPoolStartSize = 3.106382f;
     public float val_bananaPoolEndSize   = 0.200000f;
     public string val_saladMonkeyRequest = "banana";
+    public float val_advertCooldown = 5.0f;
 
     [Header("States")]
     public bool ste_tabletActive    = false;
@@ -48,6 +49,11 @@ public class GameManager : MonoBehaviour
     public Sprite img_banana;
     public Sprite img_cheese;
     public Sprite img_lice;
+
+    [Header("Banana Posters")]
+    public Sprite ui_bananaPoster1;
+    public Sprite ui_bananaPoster2;
+    public AudioClip snd_bananaPoster;  
 
     void Update()
     {   
@@ -123,5 +129,21 @@ public class GameManager : MonoBehaviour
             val_bananaPool += val_poolFillRate;
             if (val_bananaPool > 100.0f)
                 val_bananaPool = 100.0f;    // Clamp.
+    }
+
+    public Sprite GenerateBananaAdvertImage()
+    {
+        int rando = Random.Range(1,3);
+
+        switch(rando)
+        {
+            case 1:
+                return ui_bananaPoster1;
+            case 2:
+                return ui_bananaPoster2;
+        }
+
+        // default
+        return ui_bananaPoster1;
     }
 }
