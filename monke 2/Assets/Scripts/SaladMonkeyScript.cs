@@ -10,13 +10,13 @@ public class SaladMonkeyScript : MonoBehaviour
     [Header("Private Stats")]
     public float val_minWait = 5.0f;
     public float val_maxWait = 12.0f;
+    public float waitTimeWarning;
     [Header("Private States")]
     public bool ste_pissedOff = false;
     [Header("Salad Stuff")]
     public List<string> ingredients;
 
     [Header("Generated")]
-    public float waitTimeWarning;
     public float waitTime;
     public string currentIngredient;
 
