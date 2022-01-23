@@ -13,6 +13,7 @@ public class JumpscareHandler : MonoBehaviour
     [Header("Jumpscare Models")]
     public GameObject mdl_bananaPoolJumpscare;
     public GameObject mdl_saladMonkeyJumpscare;
+    public GameObject mdl_monkeJumpscare;
 
     public void DeactivateComponents()
     {

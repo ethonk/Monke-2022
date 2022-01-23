@@ -33,12 +33,16 @@ public class GameManager : MonoBehaviour
     public GameObject mdl_mainDoor;
 
     [Header("Sounds")]
+    // mask
+    public AudioClip snd_maskOn;
+    public AudioClip snd_maskOff;
     // ball pit
     public AudioClip snd_ballpitTaskFail;
     public AudioClip snd_ballpitTaskSucceed;
     // salad monkey
     public AudioClip snd_saladMonkeyDispleasure;
     public AudioClip snd_saladMonkeyPleasure;
+    public AudioClip snd_saladMonkeyWarning;
 
     [Header("Salad Images")]
     public Sprite img_banana;
@@ -74,6 +78,13 @@ public class GameManager : MonoBehaviour
         mdl_mask.GetComponent<Animator>().SetBool("mask-active", ste_maskActive);
         if (Input.GetKeyDown(KeyCode.Q) && !ste_tabletActive)    // If key press && tablet not active
         {
+            // Handle sound
+            mdl_mask.GetComponent<AudioSource>().Stop();
+            if (ste_maskActive)
+                mdl_mask.GetComponent<AudioSource>().PlayOneShot(snd_maskOff);
+            else
+                mdl_mask.GetComponent<AudioSource>().PlayOneShot(snd_maskOn);
+            // Handle mask
             ste_maskActive = !ste_maskActive;
             mdl_mask.GetComponent<Animator>().SetBool("mask-active", ste_maskActive);
         }

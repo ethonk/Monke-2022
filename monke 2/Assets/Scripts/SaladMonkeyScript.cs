@@ -16,6 +16,7 @@ public class SaladMonkeyScript : MonoBehaviour
     public List<string> ingredients;
 
     [Header("Generated")]
+    public float waitTimeWarning;
     public float waitTime;
     public string currentIngredient;
 
@@ -27,7 +28,10 @@ public class SaladMonkeyScript : MonoBehaviour
     {
         // Disappear on piss off
         if (ste_pissedOff)
+        {
             GetComponent<MeshRenderer>().enabled = false;
+            currentIngredient = "none";
+        }
 
         // Update UI
         gameManager.val_saladMonkeyRequest = currentIngredient;
@@ -38,7 +42,11 @@ public class SaladMonkeyScript : MonoBehaviour
         // generate random list member
         int listIndex = Random.Range(0, ingredients.Count);
         currentIngredient = ingredients[listIndex];
-        yield return new WaitForSeconds(GenerateRandomWait());
+        yield return new WaitForSeconds(GenerateRandomWait()-waitTimeWarning);
+        // Play warning
+        GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().PlayOneShot(gameManager.snd_saladMonkeyWarning);
+        yield return new WaitForSeconds(waitTimeWarning);
         // Jumpscare
         StopAllCoroutines();
         StartCoroutine(Jumpscare());

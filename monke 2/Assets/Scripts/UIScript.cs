@@ -16,6 +16,7 @@ public class UIScript : MonoBehaviour
     public TextMeshProUGUI ui_power;
     public GameObject ui_saladOptions;
     public Image ui_saladRequest;
+    public GameObject ui_saladRequestOptions;
 
     [Header("UI Elements - Camera UI Specifics")]
     public GameObject ui_bananaPool;
@@ -58,6 +59,11 @@ public class UIScript : MonoBehaviour
             case "lice":
                 ui_saladRequest.sprite = gameManager.img_lice;
                 break;
+        }
+        // Showing the minigame. 
+        if (gameManager.val_saladMonkeyRequest == "none")
+        {
+            ui_saladRequestOptions.SetActive(false);
         }
         
     }

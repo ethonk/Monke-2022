@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MonkeScript : MonoBehaviour
 {
+    [Header("Game Manager")]
+    public GameManager gameManager;
+
     [Header("Position Data")]
     public int positionIndex = 0;   // Do not modify.
     public Vector3 currentPosition; // Do not modify.
@@ -15,12 +18,10 @@ public class MonkeScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Find gamemanager
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        // Move monke
         StartCoroutine(MoveMonke());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 
     // Move the Monke
@@ -34,14 +35,12 @@ public class MonkeScript : MonoBehaviour
         if (positionIndex == positions.Count)   // If maximum has reached, reset position.
         {
             positionIndex = 0;
+
+            // If door not closed, jumpscare.
+            if (!gameManager.ste_mainDoorActive)
+                gameManager.GetComponent<JumpscareHandler>().Jumpscare(gameManager.GetComponent<JumpscareHandler>().mdl_monkeJumpscare, gameManager.GetComponent<JumpscareHandler>().snd_bananaPoolJumpscare);
         }
 
         StartCoroutine(MoveMonke());
-    }
-
-    // Run Jumpscare
-    void Jumpscare()
-    {
-
     }
 }
