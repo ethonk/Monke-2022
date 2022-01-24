@@ -14,6 +14,7 @@ public class UIScript : MonoBehaviour
     public GameObject ui_cameraStatic;
     public GameObject ui_roomButtons;
     public TextMeshProUGUI ui_power;
+    public TextMeshProUGUI ui_time;
     public GameObject ui_saladOptions;
     public Image ui_saladRequest;
     public GameObject ui_saladRequestOptions;
@@ -32,6 +33,16 @@ public class UIScript : MonoBehaviour
 
     void Update()
     {
+        // Create time
+        int time;
+        if (gameManager.val_time == 0)
+            time = 12;
+        else
+            time = gameManager.val_time;
+        // Update Time
+        ui_time.text = time.ToString() + "AM";
+
+        //
         CameraUISpecifics();
 
         // Camera Static Toggle
@@ -94,7 +105,8 @@ public class UIScript : MonoBehaviour
     public IEnumerator Advertisement()
     {
         yield return new WaitForSeconds(gameManager.val_advertCooldown);
-        if (!ui_advertisement.gameObject.activeInHierarchy)
+        // Run ad if ad is not already active and if player isnt being jumpscared.
+        if (!ui_advertisement.gameObject.activeInHierarchy && !gameManager.GetComponent<JumpscareHandler>().ste_jumpscared)
         {
             ui_advertisement.gameObject.SetActive(true);
             ui_advertisement.sprite = gameManager.GenerateBananaAdvertImage();

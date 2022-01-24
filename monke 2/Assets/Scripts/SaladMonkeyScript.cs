@@ -30,6 +30,7 @@ public class SaladMonkeyScript : MonoBehaviour
         if (ste_pissedOff)
         {
             GetComponent<MeshRenderer>().enabled = false;
+            transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false; // chef hat
             currentIngredient = "none";
         }
 
@@ -109,9 +110,6 @@ public class SaladMonkeyScript : MonoBehaviour
         GetComponent<AudioSource>().PlayOneShot(gameManager.snd_saladMonkeyDispleasure);
         yield return new WaitForSeconds(8.0f);
         // Jumpscare script
-        if (!gameManager.GetComponent<JumpscareHandler>().jumpscared)
-        {
-            gameManager.GetComponent<JumpscareHandler>().Jumpscare(gameManager.GetComponent<JumpscareHandler>().mdl_saladMonkeyJumpscare, gameManager.GetComponent<JumpscareHandler>().snd_bananaPoolJumpscare);
-        }
+        gameManager.GetComponent<JumpscareHandler>().Jumpscare(gameManager.GetComponent<JumpscareHandler>().mdl_saladMonkeyJumpscare, gameManager.GetComponent<JumpscareHandler>().snd_bananaPoolJumpscare);
     }
 }
