@@ -1500,6 +1500,7 @@ MonoBehaviour:
   snd_saladMonkeyWarning: {fileID: 8300000, guid: 1b96f12e7d5a0aa4d842bdcd007c29c4,
     type: 3}
   snd_doorSlam: {fileID: 8300000, guid: 245ec491f1486df438225194a5dfa24b, type: 3}
+  snd_doorKnocking: {fileID: 8300000, guid: d8973026862dc5d4f824a92a332a991f, type: 3}
   img_banana: {fileID: 21300000, guid: 93bf41d668bf062489c607470c8c083a, type: 3}
   img_cheese: {fileID: 21300000, guid: dd2ee6eb8f3518748a285fc47eaaa29d, type: 3}
   img_lice: {fileID: 21300000, guid: 382a534278b022b4fa7a85b7e5d730e2, type: 3}
