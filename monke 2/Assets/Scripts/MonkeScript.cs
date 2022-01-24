@@ -39,6 +39,9 @@ public class MonkeScript : MonoBehaviour
             // If door not closed, jumpscare.
             if (!gameManager.ste_mainDoorActive)
                 gameManager.GetComponent<JumpscareHandler>().Jumpscare(gameManager.GetComponent<JumpscareHandler>().mdl_monkeJumpscare, gameManager.GetComponent<JumpscareHandler>().snd_bananaPoolJumpscare);
+            // If door closed
+            gameManager.mdl_mainDoor.GetComponent<AudioSource>().Stop();
+            gameManager.mdl_mainDoor.GetComponent<AudioSource>().PlayOneShot(gameManager.snd_doorKnocking);
         }
 
         StartCoroutine(MoveMonke());

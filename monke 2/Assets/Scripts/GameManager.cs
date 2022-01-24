@@ -47,13 +47,15 @@ public class GameManager : MonoBehaviour
     public AudioClip snd_maskOn;
     public AudioClip snd_maskOff;
     // ball pit
-    public AudioClip snd_ballpitTaskFail;
-    public AudioClip snd_ballpitTaskSucceed;
+    public AudioClip snd_poolMonkeyWarn;
+    public AudioClip snd_poolMonkeyFail;
+    public AudioClip snd_poolMonkeySucceed;
     // salad monkey
     public AudioClip snd_saladMonkeyDispleasure;
     public AudioClip snd_saladMonkeyPleasure;
     public AudioClip snd_saladMonkeyWarning;
     public AudioClip snd_doorSlam;
+    public AudioClip snd_doorKnocking;
 
     [Header("Salad Images")]
     public Sprite img_banana;

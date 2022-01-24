@@ -1490,8 +1490,9 @@ MonoBehaviour:
   snd_phoneGuy: {fileID: 8300000, guid: 36b7fd9d45c893d478641f6136150173, type: 3}
   snd_maskOn: {fileID: 8300000, guid: 20a8eaccd77a7b54aba2c000098a441c, type: 3}
   snd_maskOff: {fileID: 8300000, guid: 53fe4f47c6c668a4b998dd7117dfac31, type: 3}
-  snd_ballpitTaskFail: {fileID: 8300000, guid: db400ee95a9b3454b9e6ecd193c89101, type: 3}
-  snd_ballpitTaskSucceed: {fileID: 8300000, guid: f5e213ded053fa64ca544cb6e5f2e6e2,
+  snd_poolMonkeyWarn: {fileID: 8300000, guid: 9290f716210d2ea48be2a18973e22db5, type: 3}
+  snd_poolMonkeyFail: {fileID: 8300000, guid: cb6cc844f402d5144acfc0001ab46363, type: 3}
+  snd_poolMonkeySucceed: {fileID: 8300000, guid: dad6902a01ca7ae45b4e0c5aed8b6122,
     type: 3}
   snd_saladMonkeyDispleasure: {fileID: 8300000, guid: 6fea13aa6f977954ea1070074fee0356,
     type: 3}
@@ -13266,7 +13267,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
