@@ -14,6 +14,8 @@ public class TabletScript : MonoBehaviour
     public Camera cmr_electrical;
     public Camera cmr_entrance;
     public Camera cmr_enclosure;
+    public Camera cmr_hallway;
+    public Camera cmr_airSystems;
 
     public void SwitchToCamera(Camera cam)
     {

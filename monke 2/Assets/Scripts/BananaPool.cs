@@ -4,28 +4,52 @@ using UnityEngine;
 
 public class BananaPool : MonoBehaviour
 {
+    [Header("Core")]
+    public GameManager gameManager;
+
+    [Header("Values")]
+    public float val_jumpscareDelay;
+
     [Header("States")]
     public bool ste_monkePresent = true;   // is the monkey still there
 
+    [Header("Objects")]
     public Transform obj_poolWater;
-    public GameManager gameManager;
 
     void Update()
     {
+        // Monkey appear.
+        if (ste_monkePresent == false)
+            transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
+        else
+            transform.GetChild(0).GetComponent<MeshRenderer>().enabled = true;
+
         // calc size (y)
         float newY = (gameManager.val_bananaPoolStartSize-gameManager.val_bananaPoolEndSize)*(gameManager.val_bananaPool/100);
 
         obj_poolWater.localScale = new Vector3(obj_poolWater.localScale.x, newY, obj_poolWater.localScale.z);
 
-        // task failure handler
-        if (gameManager.val_bananaPool == 0 && ste_monkePresent)
+        // play warning sound
+        if (gameManager.val_bananaPool >= 20.0f && gameManager.val_bananaPool <= 20.5f && !transform.Find("WarningSound").GetComponent<AudioSource>().isPlaying)
         {
-            ste_monkePresent = false;
-            GetComponent<AudioSource>().PlayOneShot(gameManager.snd_ballpitTaskFail);
+            transform.Find("WarningSound").GetComponent<AudioSource>().PlayOneShot(gameManager.snd_ballpitTaskFail);
         }
 
         // play monkey satisfaction sound if at 100%
         if (!GetComponent<AudioSource>().isPlaying && gameManager.val_bananaPool >= 99.0f)
             GetComponent<AudioSource>().PlayOneShot(gameManager.snd_ballpitTaskSucceed);
+
+        // do jumpscare
+        if (gameManager.val_bananaPool <= 0 && ste_monkePresent)
+        {
+            ste_monkePresent = false;
+            StartCoroutine(MonkeyPoolJumpscare());
+        }
+    }
+
+    public IEnumerator MonkeyPoolJumpscare()
+    {
+        yield return new WaitForSeconds(val_jumpscareDelay);
+        gameManager.GetComponent<JumpscareHandler>().Jumpscare(gameManager.GetComponent<JumpscareHandler>().mdl_bananaPoolJumpscare, gameManager.GetComponent<JumpscareHandler>().snd_bananaPoolJumpscare);
     }
 }
