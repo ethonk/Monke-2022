@@ -32,17 +32,19 @@ public class BananaPool : MonoBehaviour
         // play warning sound
         if (gameManager.val_bananaPool >= 20.0f && gameManager.val_bananaPool <= 20.5f && !transform.Find("WarningSound").GetComponent<AudioSource>().isPlaying)
         {
-            transform.Find("WarningSound").GetComponent<AudioSource>().PlayOneShot(gameManager.snd_ballpitTaskFail);
+            transform.Find("WarningSound").GetComponent<AudioSource>().PlayOneShot(gameManager.snd_poolMonkeyWarn);
         }
 
         // play monkey satisfaction sound if at 100%
         if (!GetComponent<AudioSource>().isPlaying && gameManager.val_bananaPool >= 99.0f)
-            GetComponent<AudioSource>().PlayOneShot(gameManager.snd_ballpitTaskSucceed);
+            GetComponent<AudioSource>().PlayOneShot(gameManager.snd_poolMonkeySucceed);
 
         // do jumpscare
         if (gameManager.val_bananaPool <= 0 && ste_monkePresent)
         {
             ste_monkePresent = false;
+            GetComponent<AudioSource>().Stop();
+            GetComponent<AudioSource>().PlayOneShot(gameManager.snd_poolMonkeyFail);
             StartCoroutine(MonkeyPoolJumpscare());
         }
     }
