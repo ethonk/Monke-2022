@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
     public AudioClip snd_saladMonkeyPleasure;
     public AudioClip snd_saladMonkeyWarning;
     public AudioClip snd_doorSlam;
+    public AudioClip snd_doorKnocking;
 
     [Header("Salad Images")]
     public Sprite img_banana;
