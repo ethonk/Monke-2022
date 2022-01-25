@@ -12,9 +12,6 @@ public class MonkeScript : MonoBehaviour
     public Vector3 currentPosition; // Do not modify.
     public List<Vector3> positions;
 
-    [Header("Movement Data")]
-    public float moveDelay;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -27,21 +24,24 @@ public class MonkeScript : MonoBehaviour
     // Move the Monke
     public IEnumerator MoveMonke()
     {
-        yield return new WaitForSeconds(moveDelay);
+        yield return new WaitForSeconds(gameManager.val_monkeMoveDelay);
         transform.root.position = positions[positionIndex];
         currentPosition = positions[positionIndex];
         positionIndex++;
 
         if (positionIndex == positions.Count)   // If maximum has reached, reset position.
         {
+            // Move monke back
             positionIndex = 0;
-
+            transform.root.position = positions[positionIndex];
+            currentPosition = positions[positionIndex];
             // If door not closed, jumpscare.
             if (!gameManager.ste_mainDoorActive)
                 gameManager.GetComponent<JumpscareHandler>().Jumpscare(gameManager.GetComponent<JumpscareHandler>().mdl_monkeJumpscare, gameManager.GetComponent<JumpscareHandler>().snd_bananaPoolJumpscare);
             // If door closed
             gameManager.mdl_mainDoor.GetComponent<AudioSource>().Stop();
             gameManager.mdl_mainDoor.GetComponent<AudioSource>().PlayOneShot(gameManager.snd_doorKnocking);
+            
         }
 
         StartCoroutine(MoveMonke());

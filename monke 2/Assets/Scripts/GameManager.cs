@@ -7,21 +7,26 @@ public class GameManager : MonoBehaviour
 {
     [Header("Core")]
     public UIScript ui;
+    public Difficulty difficulty;
 
     [Header("Values")]
     public int val_time             = 0;
     public int val_finishingTime    = 6;
     public float val_nightDuration  = 270.0f;
     public float val_power          = 100.0f;
-    public float val_drainRate      = 0.005f;
+    public float val_drainRate;
     // Banana Pool
     public float val_bananaPool     = 95.0f;
-    public float val_poolDrainRate  = 0.02f;
     public float val_poolFillRate   = 10.0f;
     public float val_bananaPoolStartSize = 2.867768f;
     public float val_bananaPoolEndSize   = 0.09633824f;
     public string val_saladMonkeyRequest = "banana";
-    public float val_advertCooldown = 5.0f;
+
+    [Header("Essential Monkey Values")]
+    public float val_monkeMoveDelay = 5.0f;
+    public float val_poolDrainRate = 0.002f;
+    public float val_saladMonkeMinWait = 10.0f;
+    public float val_advertCooldown = 30.0f;
 
     [Header("States")]
     public bool ste_disabled        = false;

@@ -8,7 +8,6 @@ public class SaladMonkeyScript : MonoBehaviour
     public GameManager gameManager;
 
     [Header("Private Stats")]
-    public float val_minWait = 5.0f;
     public float val_maxWait = 12.0f;
     public float waitTimeWarning;
     [Header("Private States")]
@@ -40,6 +39,8 @@ public class SaladMonkeyScript : MonoBehaviour
 
     public IEnumerator RequestSalad()
     {
+        currentIngredient = "none";
+        yield return new WaitForSeconds(2.0f);
         // generate random list member
         int listIndex = Random.Range(0, ingredients.Count);
         currentIngredient = ingredients[listIndex];
@@ -96,7 +97,7 @@ public class SaladMonkeyScript : MonoBehaviour
 
     float GenerateRandomWait()
     {
-        float _waitTime = Random.Range(val_minWait, val_maxWait);
+        float _waitTime = Random.Range(gameManager.val_saladMonkeMinWait, val_maxWait);
         waitTime = _waitTime;
         return _waitTime;
     }
