@@ -1567,7 +1567,7 @@ MonoBehaviour:
   val_power: 100
   val_drainRate: 0.0035
   val_bananaPool: 95
-  val_poolFillRate: 10
+  val_poolFillRate: 50
   val_bananaPoolStartSize: 2.867768
   val_bananaPoolEndSize: 0.09633824
   val_saladMonkeyRequest: banana
@@ -11669,7 +11669,7 @@ MonoBehaviour:
   mke_joey_pb: 0
   mke_ads_pb: 0
   mke_gregoryList:
-  - 0
+  - 270
   - 15
   - 14
   - 13.5
@@ -11713,7 +11713,7 @@ MonoBehaviour:
   - 0.2
   - 0.35
   mke_joeyList:
-  - 0
+  - 270
   - 15
   - 14.5
   - 14
@@ -11735,7 +11735,7 @@ MonoBehaviour:
   - 3
   - 2.5
   mke_adsList:
-  - 0
+  - 270
   - 54
   - 50
   - 48

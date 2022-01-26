@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public float val_drainRate;
     // Banana Pool
     public float val_bananaPool     = 95.0f;
-    public float val_poolFillRate   = 10.0f;
+    public float val_poolFillRate   = 50.0f;
     public float val_bananaPoolStartSize = 2.867768f;
     public float val_bananaPoolEndSize   = 0.09633824f;
     public string val_saladMonkeyRequest = "banana";
