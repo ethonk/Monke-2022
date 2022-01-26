@@ -11,6 +11,15 @@ public class MenuUIScript : MonoBehaviour
     public GameObject obj_allMonke;
     public Difficulty obj_difficulty;
 
+    [Header("Sounds")]
+    public AudioClip snd_menuMusic;
+
+    void Start()
+    {
+        // Begin menu music
+        GetComponent<AudioSource>().PlayOneShot(snd_menuMusic);
+    }
+
     public void OnClick()
     {
         obj_currentButton = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
@@ -48,6 +57,7 @@ public class MenuUIScript : MonoBehaviour
         obj_difficulty.mke_alfred_pb = obj_allMonke.transform.GetChild(1).GetComponent<MenuMonke>().val_level;
         obj_difficulty.mke_joey_pb = obj_allMonke.transform.GetChild(2).GetComponent<MenuMonke>().val_level;
         obj_difficulty.mke_ads_pb = obj_allMonke.transform.GetChild(3).GetComponent<MenuMonke>().val_level;
+        obj_difficulty.mke_johnathan_pb = obj_allMonke.transform.GetChild(4).GetComponent<MenuMonke>().val_level;
         obj_difficulty.UpdateValues();
         
         SceneManager.LoadScene("GameScene");

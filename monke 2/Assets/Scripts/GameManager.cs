@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [Header("Core")]
     public UIScript ui;
     public Difficulty difficulty;
+    public CameraScript cameras_master;
 
     [Header("Values")]
     public int val_time             = 0;
@@ -23,15 +24,18 @@ public class GameManager : MonoBehaviour
     public string val_saladMonkeyRequest = "banana";
 
     [Header("Essential Monkey Values")]
-    public float val_monkeMoveDelay = 5.0f;
-    public float val_poolDrainRate = 0.002f;
-    public float val_saladMonkeMinWait = 10.0f;
-    public float val_advertCooldown = 30.0f;
+    public float val_monkeMoveDelay;
+    public float val_poolDrainRate;
+    public float val_saladMonkeMinWait;
+    public float val_advertCooldown;
+    public float val_johnathanMoveDelay;
 
     [Header("States")]
     public bool ste_disabled        = false;
     public bool ste_tabletActive    = false;
     public bool ste_maskActive      = false;
+    [Header("States - Banana Pool")]
+    public bool ste_poolPissed;
 
     [Header("States - Doors")]
     public bool ste_mainDoorActive  = false;
@@ -84,9 +88,6 @@ public class GameManager : MonoBehaviour
     {   
         InputHandler();     // Handle all the input.
         ValueHandler();     // Handle all the values.
-        // Die on power outage
-        if (val_power <= 0)
-            SceneManager.LoadScene("GameOverScreen");
     }
 
     void InputHandler()
@@ -106,6 +107,8 @@ public class GameManager : MonoBehaviour
             {
                 if (ste_tabletActive)   // Close camera
                     GetComponent<TabletScript>().SwitchToCamera(cmr_main);
+                    // reset camera position to zero
+                    cameras_master.ResetRotation();
                 ste_tabletActive = !ste_tabletActive;
                 mdl_tablet.GetComponent<Animator>().SetBool("tablet-active", ste_tabletActive);
             }

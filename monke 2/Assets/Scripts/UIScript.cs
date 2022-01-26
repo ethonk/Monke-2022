@@ -19,6 +19,7 @@ public class UIScript : MonoBehaviour
     public Image ui_saladRequest;
     public GameObject ui_saladRequestOptions;
     public Image ui_advertisement;
+    public GameObject ui_cameraControls;
 
     [Header("UI Elements - Camera UI Specifics")]
     public GameObject ui_bananaPool;
@@ -80,18 +81,27 @@ public class UIScript : MonoBehaviour
                 ui_saladRequest.sprite = gameManager.img_lice;
                 break;
         }
-        // Showing the minigame. 
+        // Showing the salad minigame. 
         if (gameManager.val_saladMonkeyRequest == "none")
         {
             ui_saladRequestOptions.SetActive(false);
         }
-        
     }
 
     void CameraUISpecifics()
     {
+        // Moving camera left and right
+        if (gameManager.ste_disabled || gameManager.ste_tabletActive)
+        {
+            ui_cameraControls.SetActive(false);
+            gameManager.cameras_master.StopRotate();
+            gameManager.cameras_master.ResetRotation();
+        }
+        else
+            ui_cameraControls.SetActive(true);
+
         // Banana Pool UI
-        if (tabletScript.cmr_active == tabletScript.cmr_enclosure)
+        if (tabletScript.cmr_active == tabletScript.cmr_enclosure && !gameManager.ste_poolPissed)
             ui_bananaPool.SetActive(true);
         else    
             ui_bananaPool.SetActive(false);

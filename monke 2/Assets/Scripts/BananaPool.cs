@@ -47,6 +47,9 @@ public class BananaPool : MonoBehaviour
             GetComponent<AudioSource>().PlayOneShot(gameManager.snd_poolMonkeyFail);
             StartCoroutine(MonkeyPoolJumpscare());
         }
+
+        // Update gamemanager pool pissed
+        gameManager.ste_poolPissed = !ste_monkePresent;
     }
 
     public IEnumerator MonkeyPoolJumpscare()
