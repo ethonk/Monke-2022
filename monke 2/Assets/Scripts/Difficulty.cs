@@ -23,22 +23,26 @@ public class Difficulty : MonoBehaviour
     public static int mke_ads;
 
     [Header("Monkey Stats (20 levels of difficulty)")]
-    public List<float> mke_gregoryList = new List<float>(21) {0.0f, 15.0f, 14.0f, 13.5f, 13.0f, 12.5f, 12.0f, 11.5f, 11.0f, 10.5f, 10.0f, 9.0f, 8.0f, 7.5f, 7.0f, 6.0f, 5.0f, 4.0f, 3.5f, 3.0f, 2.5f};
+    public List<float> mke_gregoryList = new List<float>(21) {270.0f, 15.0f, 14.0f, 13.5f, 13.0f, 12.5f, 12.0f, 11.5f, 11.0f, 10.5f, 10.0f, 9.0f, 8.0f, 7.5f, 7.0f, 6.0f, 5.0f, 4.0f, 3.5f, 3.0f, 2.5f};
     public List<float> mke_alfredList  = new List<float>(21) {0.0f, 0.002f, 0.004f, 0.006f, 0.008f, 0.01f, 0.015f, 0.02f, 0.03f, 0.04f, 0.05f, 0.06f, 0.07f, 0.075f, 0.08f, 0.085f, 0.09f, 0.095f, 0.15f, 0.2f, 0.35f};
-    public List<float> mke_joeyList    = new List<float>(21) {0.0f, 15.0f, 14.5f, 14.0f, 13.5f, 13.0f, 12.5f, 12.0f, 11.5f, 11.0f, 10.5f, 10.0f, 9.5f, 9.0f, 8.0f, 7.0f, 6.0f, 5.0f, 4.0f, 3.0f, 2.5f};
-    public List<float> mke_adsList     = new List<float>(21) {0.0f, 54.0f, 50.0f, 48.0f, 45.0f, 40.0f, 36.0f, 32.0f, 28.0f, 24.0f, 20.0f, 18.0f, 16.0f, 14.0f, 12.0f, 11.0f, 10.0f, 9.0f, 8.0f, 7.0f, 6.0f};
+    public List<float> mke_joeyList    = new List<float>(21) {270.0f, 15.0f, 14.5f, 14.0f, 13.5f, 13.0f, 12.5f, 12.0f, 11.5f, 11.0f, 10.5f, 10.0f, 9.5f, 9.0f, 8.0f, 7.0f, 6.0f, 5.0f, 4.0f, 3.0f, 2.5f};
+    public List<float> mke_adsList     = new List<float>(21) {270.0f, 54.0f, 50.0f, 48.0f, 45.0f, 40.0f, 36.0f, 32.0f, 28.0f, 24.0f, 20.0f, 18.0f, 16.0f, 14.0f, 12.0f, 11.0f, 10.0f, 9.0f, 8.0f, 7.0f, 6.0f};
 
     void Start()
     {
         if (ingame)
         {
             // Assign difficulty modifiers
-            print(mke_gregoryList[mke_gregory]);
             gameManager.val_monkeMoveDelay      = mke_gregoryList[mke_gregory];
             gameManager.val_poolDrainRate       = mke_alfredList[mke_alfred];
             gameManager.val_saladMonkeMinWait   = mke_joeyList[mke_joey];
             gameManager.val_advertCooldown      = mke_adsList[mke_ads];
         }
+    }
+
+    public int GetJoeyDifficulty()
+    {
+        return mke_joey;
     }
 
     public void UpdateValues()

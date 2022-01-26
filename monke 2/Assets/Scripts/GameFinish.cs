@@ -12,8 +12,8 @@ public class GameFinish : MonoBehaviour
         GetComponent<AudioSource>().PlayOneShot(snd_nightFinish);
     }
 
-    public void Restart()
+    public void LoadScene(string _sceneName)
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene(_sceneName);
     }
 }

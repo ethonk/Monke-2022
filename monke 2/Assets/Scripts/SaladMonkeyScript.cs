@@ -21,7 +21,10 @@ public class SaladMonkeyScript : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(RequestSalad());
+        if(gameManager.difficulty.GetJoeyDifficulty() != 0)
+            StartCoroutine(RequestSalad());
+        else
+            currentIngredient = "none";
     }
     void Update()
     {

@@ -52,4 +52,17 @@ public class MenuUIScript : MonoBehaviour
         
         SceneManager.LoadScene("GameScene");
     }
+
+    public void Preset()
+    {
+        // Define button
+        MenuDefaultMonkes menuDefaultMonkes = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.GetComponent<MenuDefaultMonkes>();
+        // Set all 0
+        SetAll(0);
+        // Set all monke in button
+        foreach (MenuMonke monke in menuDefaultMonkes.monkes)
+        {
+            monke.val_level = menuDefaultMonkes.difficulty;
+        }
+    }
 }
