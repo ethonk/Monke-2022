@@ -1,11 +1,11 @@
 # Monke
-You are the zoo's night watchman, and the monkeys are getting a bit quirky...
------------------------------------------------
-** Lead Programmer:** Ethan Velasco Uy
-** Sound / Game Designer:** Aidan Chan
-** Lead Artist:** Sangwoo Lee
-Created January 2021.
------------------------------------------------
+You are the zoo's night watchman, and the monkeys are getting a bit quirky...  
+
+**Lead Programmer:** Ethan Velasco Uy  
+**Sound / Game Designer:** Aidan Chan  
+**Lead Artist:** Sangwoo Lee  
+
+*Created January 2021*  
 ## Monkeys inhabting the zoo
 The monkeys living inside the zoo are beloved by many! You are tasked to keep them safe from themselves and you. They have their own little habits so be sure to balance them!
 ### George
