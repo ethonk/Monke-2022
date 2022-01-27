@@ -65,6 +65,8 @@ public class GameManager : MonoBehaviour
     public AudioClip snd_saladMonkeyWarning;
     public AudioClip snd_doorSlam;
     public AudioClip snd_doorKnocking;
+    // johnathan    
+    public AudioClip snd_johnathanGlitch;
 
     [Header("Salad Images")]
     public Sprite img_banana;
@@ -82,6 +84,9 @@ public class GameManager : MonoBehaviour
         GetComponent<AudioSource>().PlayOneShot(snd_phoneGuy);
         // Start ticking time
         StartCoroutine(TimePass());
+        // Start tablet and mask
+        mdl_tablet.SetActive(true);
+        mdl_mask.SetActive(true);
     }
 
     void Update()

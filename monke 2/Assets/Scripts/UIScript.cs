@@ -20,6 +20,7 @@ public class UIScript : MonoBehaviour
     public GameObject ui_saladRequestOptions;
     public Image ui_advertisement;
     public GameObject ui_cameraControls;
+    public GameObject ui_glitch;
 
     [Header("UI Elements - Camera UI Specifics")]
     public GameObject ui_bananaPool;
@@ -137,4 +138,8 @@ public class UIScript : MonoBehaviour
         ui_advertisement.gameObject.SetActive(false);
     }
 
+    public void SetGlitch(bool _active)
+    {
+        ui_glitch.SetActive(_active);
+    }
 }

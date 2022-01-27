@@ -34,17 +34,30 @@ public class MonkeJohnathan : MonoBehaviour
 
         if (positionIndex == positions.Count)   // If maximum has reached, reset position.
         {
+            // Play glitch sound
+            GetComponent<AudioSource>().PlayOneShot(gameManager.snd_johnathanGlitch);
+            // Set glitch visibility
+            gameManager.ui.SetGlitch(true);
+
             yield return new WaitForSeconds(val_waitTime);
+
+            // Reset glitch visibility
+            gameManager.ui.SetGlitch(false);
             // Move monke back
             positionIndex = 0;
             transform.root.position = positions[positionIndex];
             currentPosition = positions[positionIndex];
             // If mask isn't on, jumpscare
             if(!gameManager.ste_maskActive)
-                gameManager.GetComponent<JumpscareHandler>().Jumpscare(gameManager.GetComponent<JumpscareHandler>().mdl_johnathanJumpscare, gameManager.GetComponent<JumpscareHandler>().snd_bananaPoolJumpscare);
+                Jumpscare();
             
         }
 
         StartCoroutine(MoveMonke());
+    }
+    
+    public void Jumpscare()
+    {
+        gameManager.GetComponent<JumpscareHandler>().Jumpscare(gameManager.GetComponent<JumpscareHandler>().mdl_johnathanJumpscare, gameManager.GetComponent<JumpscareHandler>().snd_bananaPoolJumpscare);
     }
 }
