@@ -1,6 +1,9 @@
 # Monke
 You are the zoo's night watchman, and the monkeys are getting a bit quirky...  
 
+Created for shits, gigs and boredom.  
+Download link to the right under **Releases**.  
+
 **Lead Programmer:** Ethan Velasco Uy  
 **Sound / Game Designer:** Aidan Chan  
 **Lead Artist:** Sangwoo Lee  
