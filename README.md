@@ -6,7 +6,7 @@ You are the zoo's night watchman, and the monkeys are getting a bit quirky...
 **Lead Artist:** Sangwoo Lee  
 
 *Created January 2021*  
-## Monkeys inhabting the zoo
+## Monkeys inhabiting the zoo
 The monkeys living inside the zoo are beloved by many! You are tasked to keep them safe from themselves and you. They have their own little habits so be sure to balance them!
 ### George
 George is the star of the show, he likes to roam but can be a little extreme when close to you so make sure you keep your door shut if he gets too close!  
