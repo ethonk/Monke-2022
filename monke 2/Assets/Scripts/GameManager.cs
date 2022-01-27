@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         // Start phone call
-        GetComponent<AudioSource>().PlayOneShot(snd_phoneGuy);
+        //GetComponent<AudioSource>().PlayOneShot(snd_phoneGuy);
         // Start ticking time
         StartCoroutine(TimePass());
         // Start tablet and mask
